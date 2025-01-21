@@ -1,5 +1,6 @@
 const Course = require('../models/course.model.js');
 
+// create Course
 const createCourse = async (req, res) => {
     try {
         // Create a new course from the request body
@@ -19,4 +20,30 @@ const createCourse = async (req, res) => {
     }
 };
 
-module.exports = { createCourse };
+
+// Get Course 
+const getCourse = async (req,res ) => {
+    try {
+
+        const course = await Course.find () ; 
+        res.status(200).json(course);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+// update Course 
+
+// const updateCourse = async (req, res) => 
+// {
+//     try {
+//         let updateData = req.body
+//     }  
+//     catch (error){
+//         res.status(500).json({ message: error.message });
+
+//     }
+// }
+
+module.exports = { createCourse ,getCourse , updateCourse };
